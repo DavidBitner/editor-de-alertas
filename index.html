@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Formatação de Alertas</title>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="title">Formatação de Alertas</h1>
+    <div id="editor"></div>
+    <button class="button-19" onclick="copyHTML()">Copiar texto formatado</button>
+  </div>
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script>
+    const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          [{ header: [1, 2, false] }],
+          ['bold', 'italic', 'underline'],
+          [{ 'color': [] }, { 'background': [] }],
+          [{ 'align': [] }],
+          ['clean']
+        ]
+      }
+    });
+
+    function copyHTML() {
+      const html = quill.root.innerHTML;
+      navigator.clipboard.writeText(html).then(() => {
+        alert('HTML copiado');
+      });
+    }
+  </script>
+</body>
+
+</html>
